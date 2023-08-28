@@ -63,7 +63,7 @@ export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
     `
     query AllPosts {
-      posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+      posts(first: 30, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
             title
@@ -117,7 +117,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
     : slug === postPreview.slug;
   const isDraft = isSamePost && postPreview?.status === "draft";
   const isRevision = isSamePost && postPreview?.status === "publish";
-  console.log("slug", slug);
+  //console.log("slug", slug);
   const data = await fetchAPI(
     `
     fragment AuthorFields on User {
@@ -140,8 +140,8 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
             height
             width
           }
-          sizes(size: MEDIUM)
-          srcSet(size: THUMBNAIL)
+          sizes(size: LARGE)
+          srcSet(size: MEDIUM)
           title(format: RENDERED)
         }
       }
@@ -191,7 +191,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
             : ""
         }
       }
-      posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+      posts(first: 5, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
             ...PostFields

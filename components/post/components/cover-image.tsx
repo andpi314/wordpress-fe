@@ -18,7 +18,7 @@ interface Props {
 }
 
 export default function CoverImage({ title, coverImage, slug }: Props) {
-  // console.log("CoverImage", coverImage?.node);
+  //console.log("CoverImage", coverImage?.node);
   const imageDefault = coverImage?.node?.sourceUrl && (
     <div
       className="relative w-full"
@@ -64,7 +64,7 @@ export default function CoverImage({ title, coverImage, slug }: Props) {
           {imageDefault}
         </Link>
       ) : (
-        image
+        imageDefault
       )}
     </div>
   );

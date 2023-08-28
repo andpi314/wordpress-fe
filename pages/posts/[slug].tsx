@@ -37,11 +37,13 @@ export default function Post({ post, posts, preview }) {
                   content={post.featuredImage?.node.sourceUrl}
                 />
               </Head>
+
               <PostHeader
                 title={post.title}
                 coverImage={post.featuredImage}
                 date={post.date}
                 author={post.author}
+                contentSize={post.content?.trim().split(/\s+/)?.length || 0}
                 categories={post.categories}
               />
               <PostBody content={post.content} />
