@@ -40,6 +40,8 @@ export default function CoverImage({ title, coverImage, slug }: Props) {
         // objectFit="cover"
         // layout="fill"
         src={coverImage?.node.sourceUrl}
+        placeholder="blur"
+        blurDataURL="https://www.industrialempathy.com/img/blurry.svg"
         alt={coverImage?.node?.title || `Cover Image for ${title}`}
         layout="responsive"
         width={coverImage?.node?.mediaDetails?.width}
