@@ -1,4 +1,3 @@
-import { EXAMPLE_PATH } from "../lib/constants";
 import Container from "./container";
 
 export default function Footer() {
