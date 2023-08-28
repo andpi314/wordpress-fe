@@ -5,9 +5,9 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    fontFamily: {
-      roboto: ["Roboto", "sans-serif"],
-    },
+    // fontFamily: {
+    //   roboto: ["Roboto", "sans-serif"],
+    // },
     extend: {
       colors: {
         "accent-1": "#FAFAFA",

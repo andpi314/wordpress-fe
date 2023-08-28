@@ -13,7 +13,7 @@ export default function PostInfo(p: PostInfoProps) {
   return (
     <div>
       <hr />
-      <div className="grid grid-cols-1 md:grid-cols-4 md:gap-x-12 text-center py-2">
+      <div className="grid grid-cols-2 md:grid-cols-4 md:gap-x-12 gap-y-6 text-center py-2">
         <div>
           <div className="text-gray-500">{"Autore"}</div>
           <div className="font-bold">{author}</div>

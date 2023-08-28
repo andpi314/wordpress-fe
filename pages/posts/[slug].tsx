@@ -29,7 +29,7 @@ export default function Post({ post, posts, preview }) {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article>
+            <article className="bg-white py-10 px-6 rounded-lg">
               <Head>
                 <title>{post.title}</title>
                 <meta
