@@ -2,16 +2,16 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Container from "../../components/structure/container";
-import PostBody from "../../components/post/post-body";
-import MoreStories from "../../components/structure/more-stories";
-import Header from "../../components/structure/header";
-import PostHeader from "../../components/post/post-header";
-import SectionSeparator from "../../components/structure/section-separator";
-import Layout from "../../components/structure/layout";
-import PostTitle from "../../components/post/post-title";
-import Tags from "../../components/post/components/tags";
-import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
+import Container from "../components/structure/container";
+import PostBody from "../components/post/post-body";
+import MoreStories from "../components/structure/more-stories";
+import Header from "../components/structure/header";
+import PostHeader from "../components/post/post-header";
+import SectionSeparator from "../components/structure/section-separator";
+import Layout from "../components/structure/layout";
+import PostTitle from "../components/post/post-title";
+import Tags from "../components/post/components/tags";
+import { getAllPostsWithSlug, getPostAndMorePosts } from "../lib/api";
 
 export default function Post({ post, posts, preview }) {
   const router = useRouter();
@@ -82,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllPostsWithSlug();
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
+    paths: allPosts.edges.map(({ node }) => `/${node.slug}`) || [],
     fallback: true,
   };
 };
