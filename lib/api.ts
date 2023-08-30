@@ -27,6 +27,54 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
   return json.data;
 }
 
+export async function getTagsPosts(tags: string[]) {
+  const data = await fetchAPI(
+    `
+    query TagsPosts($tags: [String]) {
+      posts(where: {tagSlugIn: $tags}) {
+        edges {
+          node {
+            title
+            excerpt
+            slug
+            date
+            featuredImage {
+              node {
+                sourceUrl
+                mediaDetails {
+                  height
+                  width
+                }
+                sizes(size: MEDIUM)
+                srcSet(size: THUMBNAIL)
+                title(format: RENDERED)
+              }
+            }
+            author {
+              node {
+                name
+                firstName
+                lastName
+                avatar {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+    {
+      variables: {
+        tags: tags,
+      },
+    }
+  );
+
+  return data?.posts;
+}
+
 export async function getPreviewPost(id, idType = "DATABASE_ID") {
   const data = await fetchAPI(
     `
@@ -57,6 +105,24 @@ export async function getAllPostsWithSlug() {
     }
   `);
   return data?.posts;
+}
+
+export async function getAllTagsWithSlug() {
+  const data = await fetchAPI(`
+  query Tags {
+    tags {
+      edges {
+        node {
+          count
+          description
+          slug
+          name
+        }
+      }
+    }
+  }
+`);
+  return data?.tags;
 }
 
 export async function getAllPostsForHome(preview) {

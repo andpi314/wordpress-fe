@@ -16,9 +16,19 @@ export default function Index({ allPosts: { edges }, preview }) {
       <Head>
         <title>{`Andrea Provino - Blog`}</title>
       </Head>
+
       <Container>
-        {/* <Intro /> */}
-        {/* {heroPost && (
+        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] md:gap-x-12 lg:gap-x-16 gap-y-20 md:gap-y-32 mb-32">
+          <div>{morePosts.length > 0 && <MoreStories posts={morePosts} />}</div>
+          <div className="hidden md:block py-4 px-6">
+            {/* {"Widget placeholder"} */}
+          </div>
+        </div>
+      </Container>
+
+      {/* <Container>
+        <Intro />
+        {heroPost && (
           <HeroPost
             title={heroPost.title}
             coverImage={heroPost.featuredImage}
@@ -27,9 +37,9 @@ export default function Index({ allPosts: { edges }, preview }) {
             slug={heroPost.slug}
             excerpt={heroPost.excerpt}
           />
-        )} */}
+        )}
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-      </Container>
+      </Container> */}
     </Layout>
   );
 }
