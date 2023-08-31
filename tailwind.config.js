@@ -9,12 +9,31 @@ module.exports = {
     //   roboto: ["Roboto", "sans-serif"],
     // },
     extend: {
+      fontFamily: {
+        vcr: ["var(--font-vcr)"],
+        roboto: ["Roboto", "sans-serif"],
+      },
+      animation: {
+        "spin-slow": "spin 60s linear infinite",
+        "spin-slow-reverse": "spin 60s linear infinite reverse",
+      },
+      // keyframes: {
+      //   "spin-counter-clockwise": {
+      //     "0%": { transform: "rotate(0deg)" },
+      //     "100%": { transform: "rotate(360deg)" },
+      //   },
+      // },
       colors: {
-        "accent-1": "#FAFAFA",
-        "accent-2": "#EAEAEA",
-        "accent-7": "#333",
-        success: "#0070f3",
-        cyan: "#79FFE1",
+        // "accent-1": "#FAFAFA",
+        // "accent-2": "#EAEAEA",
+        // "accent-7": "#333",
+        // success: "#0070f3",
+        // cyan: "#79FFE1",
+
+        "neon-green": "#16CEB9",
+
+        "black-1": "#1c1c22",
+        black: "#030309",
       },
       spacing: {
         28: "7rem",
