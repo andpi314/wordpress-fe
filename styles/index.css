@@ -15,8 +15,8 @@
 /* Your own custom utilities */
 
 body {
-  background: #f5f4f9;
-  /* @apply bg-black; */
+  /* background: #f5f4f9; */
+  @apply bg-black;
 }
 .has-text-align-left {
   @apply text-left;

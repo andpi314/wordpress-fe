@@ -16,13 +16,15 @@ module.exports = {
       animation: {
         "spin-slow": "spin 60s linear infinite",
         "spin-slow-reverse": "spin 60s linear infinite reverse",
+        "spin-slow-reverse": "spin 60s linear infinite reverse",
+        "blur-in": "blur-fade 3s ease-in-out forwards",
       },
-      // keyframes: {
-      //   "spin-counter-clockwise": {
-      //     "0%": { transform: "rotate(0deg)" },
-      //     "100%": { transform: "rotate(360deg)" },
-      //   },
-      // },
+      keyframes: {
+        "blur-fade": {
+          "100%": { filter: "blur(0px)" },
+          "0%": { filter: "blur(40px)" },
+        },
+      },
       colors: {
         // "accent-1": "#FAFAFA",
         // "accent-2": "#EAEAEA",
@@ -31,7 +33,7 @@ module.exports = {
         // cyan: "#79FFE1",
 
         "neon-green": "#16CEB9",
-
+        "base-1": "#ACACAB",
         "black-1": "#1c1c22",
         black: "#030309",
       },

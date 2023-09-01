@@ -5,6 +5,9 @@ import Container from "../components/structure/container";
 import { getAllPostsForHome } from "../lib/api";
 import { GetStaticProps } from "next";
 import MoreStories from "../components/structure/more-stories";
+import { AnimatePresence, motion } from "framer-motion";
+import { useCallback, useState } from "react";
+import SegmentPagination from "../components/shared/SegmentPagination";
 
 export function MenuIcon() {
   return (
@@ -19,7 +22,12 @@ export function MenuIcon() {
   );
 }
 
+const ExplanationStepList = ["step1", "step2", "step3"] as const;
+
+type ExplanationStep = (typeof ExplanationStepList)[number];
+
 export default function Home({ allPosts: { edges } }: any) {
+  const [step, setStep] = useState<ExplanationStep>(ExplanationStepList[0]);
   const morePosts = edges.slice(1);
   const sections = [
     {
@@ -59,9 +67,23 @@ export default function Home({ allPosts: { edges } }: any) {
       url: "/policy",
     },
   ];
+
+  const renderDescription = useCallback((s: ExplanationStep) => {
+    switch (s) {
+      case "step1":
+        return <>{"Conoscenza d'avanguardia spiegata in parole semplici"}</>;
+
+      case "step2":
+        return <>{"Silenziosamente, a caccia della perfezione"}</>;
+
+      case "step3":
+        return <>{"Il tuo campo base per l'eccellenza"}</>;
+    }
+  }, []);
+
   return (
     <Layout alert={false} preview={false}>
-      <div className="min-h-screen relative ">
+      <div className="min-h-screen relative">
         <nav className="h-[80px] sticky w-full flex items-center justify-between top-0 border-b-[1px] border-black-1 z-10 backdrop-blur-2xl font-vcr text-white ">
           <div className="px-10">
             <Link href="/">
@@ -89,12 +111,50 @@ export default function Home({ allPosts: { edges } }: any) {
           <div className="hidden md:block px-10">{"CTA"}</div>
         </nav>
         <div className="absolute top-0 h-full overflow-hidden w-full flex justify-center items-center">
-          <div>
+          {/* animate-blur-in */}
+          {/* WELCOME WIDGET */}
+          <div className="z-10">
             <h2 className="text-[48px] uppercase text-white font-vcr text-center tracking-wider">
               {"AP - Learn"}
             </h2>
+            <AnimatePresence mode="wait" initial={true}>
+              <motion.div
+                className="py-3"
+                key={step}
+                initial={{
+                  opacity: 0,
+                  translateY: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  translateY: 0,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 0.25,
+                  type: "keyframes",
+                  ease: "easeInOut",
+                }}
+              >
+                <div className="mt-3 mb-3 py-3 flex-grow-1 text-base text-base-1 text-center">
+                  {renderDescription(step)}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+            {/* Scroller section */}
+            <div className="mr-auto ml-auto min-w-[25rem]">
+              <SegmentPagination
+                page={ExplanationStepList.indexOf(step) + 1}
+                total={ExplanationStepList.length}
+                onPageClick={(page) => {
+                  setStep(ExplanationStepList[page - 1]);
+                }}
+              />
+            </div>
           </div>
-          <div className="absolute animate-spin-slow-reverse">
+          <div className="absolute z-0 animate-spin-slow-reverse">
             <Image
               width={800}
               height={800}
@@ -103,7 +163,7 @@ export default function Home({ allPosts: { edges } }: any) {
               src={"/dotted-circle-big.svg"}
             />
           </div>
-          <div className="hidden md:block absolute  animate-spin-slow">
+          <div className="absolute z-0 hidden md:block   animate-spin-slow">
             <Image
               width={600}
               height={600}
@@ -112,7 +172,7 @@ export default function Home({ allPosts: { edges } }: any) {
               src={"/dotted-circle.svg"}
             />
           </div>
-          <div className="w-[600px] h-[600px] md:w-[1056px] md:h-[1056px] absolute overflow-hidden animate-spin-slow">
+          <div className="absolute z-0 w-[600px] h-[600px] md:w-[1056px] md:h-[1056px]  overflow-hidden animate-spin-slow">
             <Image
               className=" h-full"
               width={1056}
@@ -123,7 +183,7 @@ export default function Home({ allPosts: { edges } }: any) {
             />
           </div>
         </div>
-        <div className="flex absolute bottom-0 h-[52px] w-full justify-center md:justify-between text-white border-t-[1px] border-black-1 items-center font-vcr">
+        <div className="flex absolute bottom-0 h-[52px]  backdrop-blur-2xl w-full justify-center md:justify-between text-white border-t-[1px] border-black-1 items-center font-vcr">
           <div className="hidden md:flex mx-2">
             {refs.map((ref) => (
               <Link
