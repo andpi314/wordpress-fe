@@ -3,7 +3,7 @@ import { SubStackPreview } from "../themes/substack/post-preview";
 export default function MoreStories({ posts }) {
   return (
     <section>
-      <h2 className="mb-8 text-6xl md:text-7xl font-bold leading-tight mt-4 font-vcr uppercase tracking-wider text-white">
+      <h2 className="mb-8 text-6xl md:text-7xl font-bold leading-tight mt-4 font-vcr uppercase tracking-wider text-black">
         {"Ultimi post"}
       </h2>
       <div className="grid gap-y-2">
