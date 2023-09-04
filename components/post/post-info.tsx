@@ -13,26 +13,28 @@ export default function PostInfo(p: PostInfoProps) {
   return (
     <div>
       <hr />
-      <div className="grid grid-cols-2 md:grid-cols-4 md:gap-x-12 gap-y-6 text-center py-2">
+      <div className="grid grid-cols-2 md:grid-cols-4 md:gap-x-12 gap-y-6 text-center py-2 text-white">
         <div>
-          <div className="text-gray-500">{"Autore"}</div>
-          <div className="font-bold">{author}</div>
+          <div className="text-gray-lighter">{"Autore"}</div>
+          <div className="">{author}</div>
         </div>
         <div>
-          <div className="text-gray-500">{"Data"}</div>
-          <div className="font-bold">
+          <div className="text-gray-lighter">{"Tempo di lettura"}</div>
+          <div className="text-neon-green font-bold">{readingTime}</div>
+        </div>
+        <div>
+          <div className="text-gray-lighter">{"Categoria"}</div>
+          <div className="text-neon-green font-bold">
+            {categories.join(", ")}
+          </div>
+        </div>
+        <div>
+          <div className="text-gray-lighter">{"Data"}</div>
+          <div className="">
             <time dateTime={date}>
               {format(d, "d LLLL yyyy", { locale: it })}
             </time>
           </div>
-        </div>
-        <div>
-          <div className="text-gray-500">{"Tempo di lettura"}</div>
-          <div className="font-bold">{readingTime}</div>
-        </div>
-        <div>
-          <div className="text-gray-500">{"Categoria"}</div>
-          <div className="font-bold">{categories.join(", ")}</div>
         </div>
       </div>
       <hr />

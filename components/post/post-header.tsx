@@ -32,7 +32,7 @@ export default function PostHeader({
         />
       </div>
 
-      <div className="mb-8 md:mb-16 sm:mx-0">
+      <div className="mb-8 md:mb-16 sm:mx-0 max-w-[75%] md:m-auto flex items-center justify-center">
         <CoverImage title={title} coverImage={coverImage} />
       </div>
       <div className="max-w-2xl mx-auto">

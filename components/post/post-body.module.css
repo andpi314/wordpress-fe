@@ -1,5 +1,6 @@
 .content {
-  @apply text-lg leading-relaxed;
+  @apply text-lg leading-relaxed text-[rgba(255,255,255,0.6)];
+  letter-spacing: 1px;
   text-align: justify;
 }
 
@@ -10,8 +11,12 @@
   @apply my-6;
 }
 
+.content strong {
+  @apply text-[#FFFFFFe6];
+}
+
 .content a {
-  @apply underline;
+  @apply underline text-neon-blue;
 }
 
 .content ul,
@@ -37,15 +42,15 @@
 }
 
 .content h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  @apply text-3xl mt-12 mb-4 leading-snug font-bold font-vcr uppercase text-[#FFFFFFe6];
 }
 
 .content h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-2xl mt-8 mb-4 leading-snug font-bold font-vcr uppercase text-[#FFFFFFe6];
 }
 
 .content h4 {
-  @apply text-xl mt-6 mb-4 leading-snug;
+  @apply text-xl mt-6 mb-4 leading-snug font-bold font-vcr uppercase text-[#FFFFFFe6];
 }
 
 .content pre {
@@ -53,7 +58,15 @@
 }
 
 .content code {
-  @apply text-sm;
+  position: relative;
+  padding: 0.3em 0.4em;
+  border-radius: 0.4em;
+  font-size: 0.75em;
+  font-weight: 500;
+  color: #ffffffe6;
+  background-color: #ffffff1a;
+  font-family: monospace;
+  /* font-family: "Input Mono, SF Mono, Menlo, Monaco, Courier, monospace"; */
 }
 
 .content figcaption {

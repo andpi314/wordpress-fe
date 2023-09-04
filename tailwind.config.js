@@ -30,11 +30,15 @@ module.exports = {
         // "accent-2": "#EAEAEA",
         // "accent-7": "#333",
         // success: "#0070f3",
-        // cyan: "#79FFE1",
+        // cyan: "#16CEB9",
 
+        "neon-red": "#FC0A54",
+        "neon-blue": "#3e73c4",
         "neon-green": "#16CEB9",
         "base-1": "#ACACAB",
+        "gray-lighter": "#787883",
         "black-1": "#1c1c22",
+        "black-lighter": "#121218",
         black: "#030309",
       },
       spacing: {
